@@ -1,0 +1,12 @@
+Matrice
+18 5 
+9 18 
+
+Les vecteurs
+10 7 
+11 6 
+11 19 
+Les vecteurs
+215 216 
+228 207 
+293 441 
