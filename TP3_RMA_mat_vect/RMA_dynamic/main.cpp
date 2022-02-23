@@ -103,6 +103,24 @@ int main(int argc, char **argv) {
 
     nombre_vecteur = m;
 
+    nb_boucle = m/(nprocs*x);
+    reste_boucle = m%(nprocs*x)
+
+    if (reste_boucle != 0){
+        nb_boucle = nb_boucle+1;
+    }
+
+    for (int i = 0; i < nb_boucle; ++i) {
+        for (int j = 0; j < nprocs; ++j) {
+            if (nombre_vecteur >= x){
+                int *tab_inter = new int[x*n];
+                MPI_Get(vecteurs, x*n, MPI_INT, 0, pid*(x*n), x*n, MPI_INT, TheVects);
+            }else{
+
+            }
+        }
+    }
+
     
 
     // Dans le temps écoulé on ne s'occupe que de la partie communications et calculs
