@@ -31,7 +31,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2859e6-398a-403c-a130-2ae521cee18e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../TP1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RMA_static/main" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RMA_static/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/main.cpp" afterDir="false" />
@@ -110,7 +109,7 @@
       <workItem from="1645601389174" duration="11000" />
       <workItem from="1645601410831" duration="1789000" />
       <workItem from="1645610728042" duration="9000" />
-      <workItem from="1645622311391" duration="2282000" />
+      <workItem from="1645622311391" duration="2721000" />
     </task>
     <servers />
   </component>
@@ -134,5 +133,9 @@
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
     <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl/0.0.1920.1043@0.0.1920.1043" timestamp="1645610735155" />
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1645626841010">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1645626841010" />
   </component>
 </project>

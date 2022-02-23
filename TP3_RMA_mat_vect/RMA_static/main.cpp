@@ -133,6 +133,15 @@ int main(int argc, char **argv) {
 
     MPI_Win_fence(0,TheVects);
 
+    //affichage de la répartition des vecteurs
+    for (size_t i = 0; i < (sendcounts[pid]/n); ++i) {
+        cout << "PID: " << pid << "; Vector " << i <<" [ ";
+        for (size_t j = 0; j < n; ++j) cout << vecteurs[i * n + j] << " ";
+        cout << "]" << endl;
+    }
+
+    MPI_Win_fence(0,TheVects);
+
     // calcul matrice-vecteur
     for (size_t i = 0; i < (sendcounts[pid]/n); ++i) {
         int result[n];
@@ -147,18 +156,6 @@ int main(int argc, char **argv) {
         MPI_Put(vecteurs,sendcounts[pid],MPI_INT,0, displ[pid], sendcounts[pid], MPI_INT, TheVects);
     }
 
-    MPI_Win_fence(0,TheVects);
-
-//    if (pid==root){
-//        // affichage de la répartition des vecteurs
-//        for (size_t i = 0; i < m; ++i) {
-//            cout << "PID: " << pid << "; Vector " << i <<" [ ";
-//            for (size_t j = 0; j < n; ++j) cout << vecteurs[i * n + j] << " ";
-//            cout << "]" << endl;
-//        }
-//    }
-
-    MPI_Win_fence(0,TheMat);
     MPI_Win_fence(0,TheVects);
 
     // Dans le temps écoulé on ne s'occupe que de la partie communications et calculs
