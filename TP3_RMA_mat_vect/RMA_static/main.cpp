@@ -97,7 +97,6 @@ int main(int argc, char **argv) {
     }
 
     MPI_Win_fence(0,TheMat);
-    MPI_Win_fence(0,TheVects);
 
     //Déclaration des variables nécessaires au Scatterv
     int *sendcounts = new int[nprocs];
@@ -142,12 +141,22 @@ int main(int argc, char **argv) {
         memcpy(vecteurs + (i * n), result, n * sizeof(int));
     }
 
-    MPI_Win_fence(0,TheMat);
     MPI_Win_fence(0,TheVects);
 
     if (pid!=root){
-        MPI_Put(vecteurs,n,MPI_INT,0, displ[pid], sendcounts[pid], MPI_INT, TheVects);
+        MPI_Put(vecteurs,sendcounts[pid],MPI_INT,0, displ[pid], sendcounts[pid], MPI_INT, TheVects);
     }
+
+    MPI_Win_fence(0,TheVects);
+
+//    if (pid==root){
+//        // affichage de la répartition des vecteurs
+//        for (size_t i = 0; i < m; ++i) {
+//            cout << "PID: " << pid << "; Vector " << i <<" [ ";
+//            for (size_t j = 0; j < n; ++j) cout << vecteurs[i * n + j] << " ";
+//            cout << "]" << endl;
+//        }
+//    }
 
     MPI_Win_fence(0,TheMat);
     MPI_Win_fence(0,TheVects);

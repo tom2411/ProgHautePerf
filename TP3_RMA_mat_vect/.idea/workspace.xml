@@ -31,9 +31,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2859e6-398a-403c-a130-2ae521cee18e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../TP1/MPI1/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1/MPI1/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TP1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RMA_dynamic/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_dynamic/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RMA_static/main" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RMA_static/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RMA_static/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RMA_static/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RMA_static/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +68,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../M.Limet-OpenCL/TP1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -108,6 +110,7 @@
       <workItem from="1645601389174" duration="11000" />
       <workItem from="1645601410831" duration="1789000" />
       <workItem from="1645610728042" duration="9000" />
+      <workItem from="1645622311391" duration="2282000" />
     </task>
     <servers />
   </component>
