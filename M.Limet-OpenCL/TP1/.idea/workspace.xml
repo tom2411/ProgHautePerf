@@ -31,10 +31,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684d7986-b0ee-4360-85e6-bae824d7cc8c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../TP1/MPI1/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../TP1/MPI1/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex2-2/calcule_matrice.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex2-2/exemple.cl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex2-2/programme_hote" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex2-2/programme_hote.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex2/calcule_matrice.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/calcule_matrice.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex2/exemple.cl" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/exemple.cl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex2/programme_hote" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/programme_hote" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex2/programme_hote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/programme_hote.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/RMA_dynamic/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/RMA_dynamic/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/RMA_static/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../TP3_RMA_mat_vect/RMA_static/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TP1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,6 +71,19 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,6 +95,8 @@
       <updated>1645610736962</updated>
       <workItem from="1645610738094" duration="4280000" />
       <workItem from="1645617806875" duration="1439000" />
+      <workItem from="1645694788535" duration="3445000" />
+      <workItem from="1645705921430" duration="9193000" />
     </task>
     <servers />
   </component>
@@ -95,17 +116,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645611708392">
+    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645709755513">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
-    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1043@0.0.1920.1043" timestamp="1645611708392" />
+    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1043@0.0.1920.1043" timestamp="1645709755513" />
     <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl" timestamp="1645620827208">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
     <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl/0.0.1920.1043@0.0.1920.1043" timestamp="1645620827208" />
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1645611834668">
+    <state x="464" y="158" width="992" height="732" key="SettingsEditor" timestamp="1645709802281">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1645611834668" />
+    <state x="464" y="158" width="992" height="732" key="SettingsEditor/0.0.1920.1043@0.0.1920.1043" timestamp="1645709802281" />
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1645709770083">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1645709770083" />
   </component>
 </project>
