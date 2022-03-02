@@ -14,7 +14,7 @@
 
 // variables globales
 // taille des données (soit le vecteur ou le coté d'une matrice carrée)
-const int taille=2048;
+const int taille=4;
 // taille des données en octets Attention au type des données)
 size_t nboctets=sizeof(float)*taille*taille;
 // pointeurs vers le stockage des données en mémoire centrale
@@ -167,14 +167,19 @@ void test_CPU(){
     for (int i=0;i<taille;i++)
         for (int j = 0; j < taille; ++j) {
             for (int k = 0; k < taille; ++k) {
-                C[i*taille+j]=A[i*taille+k]+B[k*taille+j];
+                int test =0;
+                C[i*taille+j]+=A[i*taille+k]*B[k*taille+j];
+                //std::cout << "A : " << A[i*taille+k] << " B : " << B[k*taille+j] << std::endl;
+                test += A[i*taille+k]*B[k*taille+j];
+                //std::cout << "test : " << test << std::endl;
+
             }
         }
 
     std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
     std::cout<<"temps execution "<<temps(debut,fin)<<std::endl;
-    //std::cout<<"Résultat CPU"<<std::endl;
-    //affiche_vec(C,taille);
+    std::cout<<"Résultat CPU"<<std::endl;
+    affiche_mat(C,taille);
 }
 void test_GPU(cl::Program programme, cl::CommandQueue queue, cl::Context contexte){
     std::chrono::time_point<std::chrono::system_clock> debut=std::chrono::system_clock::now();
@@ -197,7 +202,7 @@ void test_GPU(cl::Program programme, cl::CommandQueue queue, cl::Context context
     // création de la topologie des processeurs
     // le local ne peut être plus grand que le global
     cl::NDRange global(taille); // nombre total d'éléments de calcul -processing elements
-    cl::NDRange local(16); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
+    cl::NDRange local(4); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
 
     // lancement du programme en GPU
     queue.enqueueNDRangeKernel(kernel,cl::NullRange,global,local);
@@ -260,15 +265,15 @@ int main(){
         cl::CommandQueue queue= cl::CommandQueue(contexte,devices[0]);
 
         // initialisation des données sur l'hote
-        init_mat(A,taille,-10,10);
-        init_mat(B,taille,-10,10);
+        init_mat(A,taille,2,2);
+        init_mat(B,taille,2,2);
         // affichage des données initialisées
         std::cout<<" Données initialisées"<<std::endl;
         //affiche_mat(A,taille);
         //affiche_mat(B,taille);
 
-        //test_CPU();
-        test_GPU(programme,queue,contexte);
+        test_CPU();
+        //test_GPU(programme,queue,contexte);
         //affiche_mat(C,taille);
 
     } catch (cl::Error err) { // Affichage des erreurs en cas de pb OpenCL

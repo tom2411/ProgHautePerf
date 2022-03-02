@@ -1,7 +1,6 @@
 #define __CL_ENABLE_EXCEPTIONS
 
 #include "CL/cl.hpp"
-#include <omp.h>
 
 #include <vector>
 #include <iostream>
@@ -12,8 +11,6 @@
 #include <cstdlib>
 #include <ctime>
 
-// compilation
-// g++ programme_hote.cpp -O3 -lOpenCL -o programme_hote -fopenmp && ./programme_hote
 
 // variables globales
 // taille des données (soit le vecteur ou le coté d'une matrice carrée)
@@ -84,8 +81,8 @@ void init_mat( float *mat, int taille, float min, float max){
         for (int i = 0; i < taille; ++i) {
             for (int j = 0; j < taille; ++j) {
                 int random = rand();
-                float val = 2;
-                //float val = min + static_cast<float>(random) /(static_cast<float>(RAND_MAX/(max-min)));
+                //float val = 1;
+                float val = min + static_cast<float>(random) /(static_cast<float>(RAND_MAX/(max-min)));
                 mat[i * taille + j] = val;
             }
         }
@@ -100,7 +97,6 @@ void init_mat( float *mat, int taille, float min, float max){
 //  }
 //  std::cout<<std::endl;
 //}
-
 
 void affiche_mat(int * mat, int taille, int nb_col=-1){
     if (nb_col==-1) nb_col=taille;
@@ -168,14 +164,18 @@ cl::Program creationProgramme(std::string nomFicSource, cl::Context contexte){
 
 void test_CPU(){
     std::chrono::time_point<std::chrono::system_clock> debut=std::chrono::system_clock::now();
-//#pragma omp parallel for num_threads(4) collapse(2)
-        for (int i = 0; i < taille; i++) {
-            for (int j = 0; j < taille; ++j) {
-                for (int k = 0; k < taille; ++k) {
-                    C[i * taille + j] += A[i * taille + k] * B[k * taille + j];
-                }
+    for (int i=0;i<taille;i++)
+        for (int j = 0; j < taille; ++j) {
+            for (int k = 0; k < taille; ++k) {
+                int test =0;
+                C[i*taille+j]+=A[i*taille+k]*B[k*taille+j];
+                //std::cout << "A : " << A[i*taille+k] << " B : " << B[k*taille+j] << std::endl;
+                test += A[i*taille+k]*B[k*taille+j];
+                //std::cout << "test : " << test << std::endl;
+
             }
         }
+
     std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
     std::cout<<"temps execution "<<temps(debut,fin)<<std::endl;
     std::cout<<"Résultat CPU"<<std::endl;
@@ -201,8 +201,8 @@ void test_GPU(cl::Program programme, cl::CommandQueue queue, cl::Context context
 
     // création de la topologie des processeurs
     // le local ne peut être plus grand que le global
-    cl::NDRange global(taille,taille); // nombre total d'éléments de calcul -processing elements
-    cl::NDRange local(4,4); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
+    cl::NDRange global(taille); // nombre total d'éléments de calcul -processing elements
+    cl::NDRange local(4); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
 
     // lancement du programme en GPU
     queue.enqueueNDRangeKernel(kernel,cl::NullRange,global,local);
@@ -228,7 +228,6 @@ int main(){
     A= new float[taille*taille];
     B= new float[taille*taille];
     C= new float[taille*taille];
-
 
 
     try{ // debut de la zone d'utilisation de l'API pour OpenCL
@@ -266,15 +265,15 @@ int main(){
         cl::CommandQueue queue= cl::CommandQueue(contexte,devices[0]);
 
         // initialisation des données sur l'hote
-        init_mat(A,taille,-10,10);
-        init_mat(B,taille,-10,10);
+        init_mat(A,taille,2,2);
+        init_mat(B,taille,2,2);
         // affichage des données initialisées
         std::cout<<" Données initialisées"<<std::endl;
         //affiche_mat(A,taille);
         //affiche_mat(B,taille);
 
         test_CPU();
-        //test_GPU(programme,queue,contexte);
+        test_GPU(programme,queue,contexte);
         //affiche_mat(C,taille);
 
     } catch (cl::Error err) { // Affichage des erreurs en cas de pb OpenCL
