@@ -10,11 +10,13 @@
 // pour la génération aléatoire
 #include <cstdlib>
 #include <ctime>
+#include <omp.h>
+#include <string.h>
 
 
 // variables globales
 // taille des données (soit le vecteur ou le coté d'une matrice carrée)
-const int taille=4096;
+const int taille=2048;
 // taille des données en octets Attention au type des données)
 size_t nboctets=sizeof(float)*taille*taille;
 // pointeurs vers le stockage des données en mémoire centrale
@@ -103,7 +105,7 @@ void affiche_mat(int * mat, int taille, int nb_col=-1){
     for (int i = 0; i < taille ; i++){
         for (int j = 0; j < taille; ++j) {
             if (j%nb_col==0) std::cout<<std::endl;
-                std::cout<<mat[j]<<" ";
+            std::cout<<mat[j]<<" ";
         }
         std::cout<<std::endl;
     }
@@ -161,25 +163,78 @@ cl::Program creationProgramme(std::string nomFicSource, cl::Context contexte){
     return cl::Program(contexte,source);
 }
 
-
 void test_CPU(){
     std::chrono::time_point<std::chrono::system_clock> debut=std::chrono::system_clock::now();
     float lambda = 0.1;
     float parti1 ,gauche, droite, haut ,bas, parti2;
-    for (int i=0;i< taille;i++){
-        for (int j = 0; j < taille; ++j) {
-            parti1 = (1-4*lambda)*A[i*taille+j];
-            gauche = (j-1 < 0) ? A[i*taille+(taille-1)] : A[i*taille+j];
-            droite = (j+1 > taille) ? A[i*taille] : A[i*taille+j];
-            haut = (i-1 < 0) ? A[(taille-1)*taille+j] : A[i*taille+j];
-            bas = (i+1 > taille) ? A[j] : A[i*taille+j];
-            parti2 = lambda*(haut+bas+gauche+droite);
-            B[i*taille+j] += parti1 + parti2;
+    for (int k=0; k <100 ; ++k) {
+        if (k >=1){
+            //std::cout << "B" << std::endl;
+            //affiche_mat(B,taille);
+            A = B;
+            //std::cout << "A" << std::endl;
+            //affiche_mat(A,taille);
+        }
+        for (int i = 0; i < taille; ++i) {
+            for (int j = 0; j < taille; ++j) {
+                parti1 = (1 - 4 * lambda) * A[i * taille + j];
+                gauche = (j - 1 < 0) ? A[i * taille + (taille - 1)] : A[i * taille + (j-1)];
+                droite = (j + 1 > taille) ? A[i * taille] : A[i * taille + (j+1)];
+                haut = (i - 1 < 0) ? A[(taille - 1) * taille + j] : A[(i-1) * taille + j];
+                bas = (i + 1 > taille) ? A[j] : A[(i+1) * taille + j];
+                parti2 = lambda * (haut + bas + gauche + droite);
+                //std::cout << "partie 1: " << parti1 << std::endl;
+                //std::cout << "partie 2: " << parti2 << std::endl;
+                B[i * taille + j] = parti1 + parti2;
+                //std::cout << "res : " << B[ i * taille + j] << std::endl;
+            }
         }
     }
 
+
+
     std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
     std::cout<<"temps execution CPU "<<temps(debut,fin)<<std::endl;
+    //std::cout<<"Résultat CPU"<<std::endl;
+    //affiche_mat(B,taille);
+}
+
+
+void test_CPU_omp(){
+    std::chrono::time_point<std::chrono::system_clock> debut=std::chrono::system_clock::now();
+    float lambda = 0.1;
+    float parti1 ,gauche, droite, haut ,bas, parti2;
+#pragma omp parallel num_threads(4)
+    {
+        for (int k=0; k <100 ; ++k) {
+            if (k >=1){
+                //std::cout << "B" << std::endl;
+                //affiche_mat(B,taille);
+                A = B;
+                //std::cout << "A" << std::endl;
+                //affiche_mat(A,taille);
+            }
+#pragma omp for collapse(2)
+            for (int i = 0; i < taille; ++i) {
+                for (int j = 0; j < taille; ++j) {
+                    parti1 = (1 - 4 * lambda) * A[i * taille + j];
+                    gauche = (j - 1 < 0) ? A[i * taille + (taille - 1)] : A[i * taille + (j-1)];
+                    droite = (j + 1 > taille) ? A[i * taille] : A[i * taille + (j+1)];
+                    haut = (i - 1 < 0) ? A[(taille - 1) * taille + j] : A[(i-1) * taille + j];
+                    bas = (i + 1 > taille) ? A[j] : A[(i+1) * taille + j];
+                    parti2 = lambda * (haut + bas + gauche + droite);
+                    //std::cout << "partie 1: " << parti1 << std::endl;
+                    //std::cout << "partie 2: " << parti2 << std::endl;
+                    B[i * taille + j] = parti1 + parti2;
+                    //std::cout << "res : " << B[ i * taille + j] << std::endl;
+                }
+            }
+        }
+    };
+
+
+    std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
+    std::cout<<"temps execution CPU omp "<<temps(debut,fin)<<std::endl;
     //std::cout<<"Résultat CPU"<<std::endl;
     //affiche_mat(B,taille);
 }
@@ -199,21 +254,20 @@ void test_GPU(cl::Program programme, cl::CommandQueue queue, cl::Context context
     kernel.setArg(0,taille);
     kernel.setArg(1,bufferA);
     kernel.setArg(2,bufferB);
-    kernel.setArg(3,bufferC);
 
     // création de la topologie des processeurs
     // le local ne peut être plus grand que le global
-    cl::NDRange global(taille); // nombre total d'éléments de calcul -processing elements
-    cl::NDRange local(4); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
+    cl::NDRange global(taille,taille); // nombre total d'éléments de calcul -processing elements
+    cl::NDRange local(16,16); // dimension des unités de calcul -compute units- c'à-dire le nombre d'éléments de calcul par unités de calcul
 
     // lancement du programme en GPU
     queue.enqueueNDRangeKernel(kernel,cl::NullRange,global,local);
 
     // recupération du résultat
     queue.enqueueReadBuffer(bufferC,CL_TRUE,0,nboctets,C);
-    std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
+    //std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
 
-    std::cout<<"temps execution "<<temps(debut,fin)<<std::endl;
+    //std::cout<<"temps execution "<<temps(debut,fin)<<std::endl;
     //  std::cout<<"Résultat GPU"<<std::endl;
     //affiche_vec(C,taille);
 }
@@ -275,7 +329,21 @@ int main(){
         //affiche_mat(B,taille);
 
         test_CPU();
-        //test_GPU(programme,queue,contexte);
+        test_CPU_omp();
+        std::chrono::time_point<std::chrono::system_clock> debut=std::chrono::system_clock::now();
+        for (int k=0; k <100 ; ++k) {
+            if (k >= 1) {
+                //std::cout << "B" << std::endl;
+                //affiche_mat(B,taille);
+                //A = B;
+                memcpy(A,B,sizeof(float)*taille*taille);
+                //std::cout << "A" << std::endl;
+                //affiche_mat(A,taille);
+            }
+            test_GPU(programme, queue, contexte);
+        }
+        std::chrono::time_point<std::chrono::system_clock> fin=std::chrono::system_clock::now();
+        std::cout<<"temps execution GPU "<<temps(debut,fin)<<std::endl;
         //affiche_mat(C,taille);
 
     } catch (cl::Error err) { // Affichage des erreurs en cas de pb OpenCL

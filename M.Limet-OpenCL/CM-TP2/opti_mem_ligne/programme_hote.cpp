@@ -198,6 +198,7 @@ void test_GPU(cl::Program programme, cl::CommandQueue queue, cl::Context context
     kernel.setArg(1,bufferA);
     kernel.setArg(2,bufferB);
     kernel.setArg(3,bufferC);
+    kernel.setArg(4,sizeof(int)*taille,NULL);
 
     // création de la topologie des processeurs
     // le local ne peut être plus grand que le global

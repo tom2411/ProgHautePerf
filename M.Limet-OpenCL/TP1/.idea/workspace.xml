@@ -31,17 +31,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684d7986-b0ee-4360-85e6-bae824d7cc8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ex3-1/calcule_matrice.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex3-1/exemple.cl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex3-1/programme_hote" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex3-1/programme_hote.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CM-TP2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CM-TP2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CM-TP2/opti_mem_ligne/exemple.cl" beforeDir="false" afterPath="$PROJECT_DIR$/../CM-TP2/opti_mem_ligne/exemple.cl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CM-TP2/opti_mem_ligne/programme_hote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../CM-TP2/opti_mem_ligne/programme_hote.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-1/exemple.cl" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/exemple.cl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-1/programme_hote" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/programme_hote" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-1/programme_hote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-1/programme_hote.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-2/exemple.cl" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-2/exemple.cl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-2/programme_hote" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-2/programme_hote" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex2-2/programme_hote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex2-2/programme_hote.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex3-1/exemple.cl" beforeDir="false" afterPath="$PROJECT_DIR$/ex3-1/exemple.cl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex3-1/programme_hote" beforeDir="false" afterPath="$PROJECT_DIR$/ex3-1/programme_hote" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex3-1/programme_hote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex3-1/programme_hote.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +75,13 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,7 +96,11 @@
       <workItem from="1645705921430" duration="9882000" />
       <workItem from="1646210267948" duration="2081000" />
       <workItem from="1646213907330" duration="1064000" />
-      <workItem from="1646216122135" duration="3278000" />
+      <workItem from="1646216122135" duration="3475000" />
+      <workItem from="1646219719417" duration="1374000" />
+      <workItem from="1646232307879" duration="14000" />
+      <workItem from="1646311982748" duration="6506000" />
+      <workItem from="1646318600789" duration="2201000" />
     </task>
     <servers />
   </component>
@@ -113,21 +120,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1646214458468">
+    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1646318713051">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
-    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1043@0.0.1920.1043" timestamp="1646214458468" />
-    <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl" timestamp="1646214970808">
+    <state x="688" y="326" width="540" height="395" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1043@0.0.1920.1043" timestamp="1646318713051" />
+    <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl" timestamp="1646318492654">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
-    <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl/0.0.1920.1043@0.0.1920.1043" timestamp="1646214970808" />
+    <state x="619" y="233" key="FileChooserDialogImpl/0.0.1600.863@0.0.1600.863" timestamp="1646232320296" />
+    <state x="743" y="281" width="430" height="486" key="FileChooserDialogImpl/0.0.1920.1043@0.0.1920.1043" timestamp="1646318492654" />
     <state x="464" y="158" width="992" height="732" key="SettingsEditor" timestamp="1645709802281">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
     <state x="464" y="158" width="992" height="732" key="SettingsEditor/0.0.1920.1043@0.0.1920.1043" timestamp="1645709802281" />
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1645709770083">
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1646317779385">
       <screen x="0" y="0" width="1920" height="1043" />
     </state>
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1645709770083" />
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1646317779385" />
   </component>
 </project>
